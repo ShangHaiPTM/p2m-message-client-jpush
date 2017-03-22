@@ -1,0 +1,55 @@
+{
+  "_moduleName": "p2m.message.client.jpush",
+  "_entries": [
+    "message-client-jpush"
+  ],
+  "name": "p2m-message-client-jpush",
+  "version": "1.0.0",
+  "description": "JPush client plugin for p2m message service.",
+  "main": "main/message-client-jpush.js",
+  "browser": "browser/message-client-jpush.js",
+  "repository": "https://github.com/colin-han/p2m-message-client-jpush.git",
+  "author": "Colin Han <biz@colinhan.info>",
+  "license": "MIT",
+  "dependencies": {
+    "babel-preset-latest": "^6.24.0",
+    "babel-runtime": "^6.23.0",
+    "jcore-react-native": "^1.0.0",
+    "jpush-react-native": "^1.5.5",
+    "p2m-message-client": "^1.0.1",
+    "react-native": "^0.42.3"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.24.0",
+    "babel-plugin-external-helpers": "^6.22.0",
+    "babel-plugin-transform-es2015-modules-amd": "^6.22.0",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "chai": "^3.5.0",
+    "del": "^2.2.2",
+    "istanbul": "^0.4.5",
+    "jquery": "^3.2.1",
+    "mocha": "^3.2.0",
+    "rollup": "^0.41.4",
+    "rollup-plugin-babel": "^2.7.1",
+    "rollup-plugin-commonjs": "^7.0.0",
+    "rollup-plugin-node-resolve": "^2.0.0",
+    "rollup-plugin-uglify": "^1.0.1"
+  },
+  "babel": {
+    "presets": [
+      "es2016",
+      "es2017"
+    ],
+    "plugins": [
+      "transform-es2015-modules-commonjs"
+    ]
+  },
+  "scripts": {
+    "configureJPush": "node node_modules/jpush-react-native/JPushConfiguration.js",
+    "build": "node tools/build.js",
+    "prepublish": "npm build && npm test",
+    "test": "mocha test/**/*.spec.js",
+    "test:watch": "mocha --reporter min --watch test/**/*.spec.js",
+    "test:cover": "babel-node ./node_modules/istanbul/lib/cli.js cover ./node_modules/mocha/bin/_mocha test/**/*.spec.js"
+  }
+}
