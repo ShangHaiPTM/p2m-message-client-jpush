@@ -37,14 +37,18 @@ let promise = Promise.resolve();
 promise = promise.then(() => del(['build/*']));
 
 // Compile source code into a distributable format with Babel
+let external = Object.keys(pkg.dependencies);
 for (const file of files) {
   for (const entry of pkg._entries) {
     promise = promise.then(() => rollup.rollup({
       entry: `src/${entry}.js`,
-      //external: file.format === 'umd' ? [] : Object.keys(pkg.dependencies),
-      external: Object.keys(pkg.dependencies),
+      external,
       plugins: [
-        ...file.format === 'umd' ? [nodeResolve({browser: true}), commonjs()] : [],
+        nodeResolve({
+          browser: file.format === 'umd',
+          skip: external,
+        }),
+        commonjs(),
         babel({
           babelrc: false,
           exclude: 'node_modules/**',
