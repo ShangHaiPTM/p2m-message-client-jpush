@@ -4,7 +4,7 @@
     "message-client-jpush"
   ],
   "name": "p2m-message-client-jpush",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "JPush client plugin for p2m message service.",
   "main": "main/message-client-jpush.js",
   "browser": "browser/message-client-jpush.js",
@@ -12,7 +12,6 @@
   "author": "Colin Han <biz@colinhan.info>",
   "license": "MIT",
   "dependencies": {
-    "babel-preset-latest": "^6.24.0",
     "babel-runtime": "^6.23.0",
     "jcore-react-native": "^1.0.0",
     "jpush-react-native": "^1.5.5",
@@ -24,6 +23,7 @@
     "babel-plugin-external-helpers": "^6.22.0",
     "babel-plugin-transform-es2015-modules-amd": "^6.22.0",
     "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-latest": "^6.24.0",
     "chai": "^3.5.0",
     "del": "^2.2.2",
     "istanbul": "^0.4.5",
