@@ -15,8 +15,7 @@
     "babel-runtime": "^6.23.0",
     "jcore-react-native": "^1.0.0",
     "jpush-react-native": "^1.5.5",
-    "p2m-message-client": "^1.0.1",
-    "react-native": "^0.42.3"
+    "p2m-message-client": "^1.0.1"
   },
   "devDependencies": {
     "babel-cli": "^6.24.0",
@@ -34,6 +33,9 @@
     "rollup-plugin-commonjs": "^7.0.0",
     "rollup-plugin-node-resolve": "^2.0.0",
     "rollup-plugin-uglify": "^1.0.1"
+  },
+  "peerDependencies": {
+    "react-native": "^0.42.3"
   },
   "babel": {
     "presets": [
