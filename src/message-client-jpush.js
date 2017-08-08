@@ -105,7 +105,7 @@ function channel(options) {
       }
     });
 
-    emit('message', message, self);
+    emit('message', message, this);
   }
   function onOpenMessage(map) {
     console.log(`[JPUSH] User press the message on notification panel.`);
@@ -113,7 +113,7 @@ function channel(options) {
     delete rememberMessages[message.sendId];
     client.read(message.sendId);
 
-    emit('openMessage', message, self);
+    emit('openMessage', message, this);
   }
 
   function forgetMessage(sendId) {
