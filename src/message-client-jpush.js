@@ -58,8 +58,8 @@ function channel(options) {
 
     console.log("[JPUSH] JPUSH client is starting...");
 
-    JPushModule.addReceiveNotificationListener(onMessage);
-    JPushModule.addReceiveOpenNotificationListener(onOpenMessage);
+    JPushModule.addReceiveNotificationListener(onMessage.bind(this));
+    JPushModule.addReceiveOpenNotificationListener(onOpenMessage.bind(this));
 
     JPushModule.getRegistrationID(function (deviceId) {
       client.register(_options.userId, deviceId, channelId)
