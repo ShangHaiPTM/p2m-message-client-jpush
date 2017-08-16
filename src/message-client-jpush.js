@@ -9,6 +9,7 @@ var { NativeAppEventEmitter, Platform } = require('react-native');
 
 const channelId = 'jpush';
 let _options;
+let subscription;
 
 function channel(options) {
   let events = {};
@@ -60,8 +61,8 @@ function channel(options) {
 
     console.log("[JPUSH] JPUSH client is starting...");
     if(Platform.OS === 'ios') {
-      NativeAppEventEmitter.addListener('ReceiveNotification',(notification) => onMessage(notification));
-      NativeAppEventEmitter.addListener('OpenNotification',(notification) => onOpenMessage(notification));
+      subscription = NativeAppEventEmitter.addListener('ReceiveNotification',onMessage.bind(this));
+      NativeAppEventEmitter.addListener('OpenNotification',onOpenMessage.bind(this));
     } else {
       JPushModule.addReceiveNotificationListener(onMessage.bind(this));
       JPushModule.addReceiveOpenNotificationListener(onOpenMessage.bind(this));
@@ -75,7 +76,11 @@ function channel(options) {
   }
   function stop() {
     console.log(`[JPUSH] Stopping service...`);
-    JPushModule.removeReceiveNotificationListener(onMessage);
+    if(Platform.OS === 'ios') {
+      subscription.remove();
+    } else {
+      JPushModule.removeReceiveNotificationListener(onMessage);
+    }
     emit('disconnect', this);
   }
 
