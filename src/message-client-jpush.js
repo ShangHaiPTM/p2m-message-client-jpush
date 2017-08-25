@@ -87,9 +87,7 @@ function channel(options) {
 
     console.log("[JPUSH] JPUSH client is unregisting...");
     JPushModule.getRegistrationID(function (deviceId) {
-      client.unRegister(_options.userId, deviceId, channelId).then(function () {
-        //emit('disconnect', self);
-      });
+      client.unRegister(_options.userId, deviceId, channelId);
     });
 
     emit('disconnect', this);
