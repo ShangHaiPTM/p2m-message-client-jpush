@@ -74,13 +74,24 @@ function channel(options) {
       });
     });
   }
-  function stop() {
+  function stop(opt2) {
+    let self = this;
+    _options = Object.assign({}, options, opt2);
+
     console.log(`[JPUSH] Stopping service...`);
     if(Platform.OS === 'ios') {
       subscription.remove();
     } else {
       JPushModule.removeReceiveNotificationListener(onMessage);
     }
+
+    console.log("[JPUSH] JPUSH client is unregisting...");
+    JPushModule.getRegistrationID(function (deviceId) {
+      client.unRegister(_options.userId, deviceId, channelId).then(function () {
+        //emit('disconnect', self);
+      });
+    });
+
     emit('disconnect', this);
   }
 
