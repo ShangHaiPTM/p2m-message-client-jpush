@@ -4,7 +4,7 @@
     "message-client-jpush"
   ],
   "name": "p2m-message-client-jpush",
-  "version": "1.0.8",
+  "version": "2.0.0",
   "description": "JPush client plugin for p2m message service.",
   "main": "main/message-client-jpush.js",
   "repository": "https://github.com/colin-han/p2m-message-client-jpush.git",
