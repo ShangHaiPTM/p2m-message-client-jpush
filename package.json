@@ -14,7 +14,7 @@
     "babel-runtime": "^6.23.0",
     "jcore-react-native": "^1.0.0",
     "jpush-react-native": "^1.5.5",
-    "p2m-message-client": "^1.0.1"
+    "p2m-message-client": "^2.0.0"
   },
   "devDependencies": {
     "babel-cli": "^6.24.0",
