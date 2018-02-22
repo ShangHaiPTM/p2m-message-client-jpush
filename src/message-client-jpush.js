@@ -37,7 +37,7 @@ function channel(options) {
 
     let found = false;
     for (let i = 0; i < list.length; i++) {
-      if (list[i] == callback) {
+      if (list[i].cb === callback) {
         list.splice(i, 1);
         found = true;
         i--;
